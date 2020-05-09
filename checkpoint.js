@@ -1,11 +1,23 @@
 
 // Funciones
+console.log('Hola')
 
 function menorMayor(numeros) {
-  // Escribi una función llamada menorMayor que tome como entrada un arreglo de números y devuelva un arreglo 
-  // que contenga el menor número del arreglo en la posición cero y el mayor número del arreglo en la posición 1.
+  // Escribi una función llamada menorMayor que tome como entrada un arreglo de números y 
+  // devuelva un arreglo que contenga el menor número del arreglo en la posición cero y el 
+  // mayor número del arreglo en la posición 1.
   // Ej: menorMayor([4, 6, 1, 7, 15]) // retorna [1, 15]
-
+  var arr = [numeros[0], numeros[0]]
+  for (var i = 1; i < numeros.length; i++) {
+    if (numeros[0] > numeros[i]) {
+      arr[0] = numeros[i];
+    } else {
+      if (numeros[1] < numeros[i]) {
+        arr[1] = numeros[i]
+      }
+    }
+  }
+  return arr;
 }
 
 function stringMasLarga(strings) {
@@ -14,7 +26,15 @@ function stringMasLarga(strings) {
   // Ej:
   // stringMasLarga(['hi', 'hello', 'ni hao', 'guten tag']); // returns 'guten tag'
   // stringMasLarga(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
-
+  var txt = '';
+  var aux = 0;
+  var masLargo = strings.forEach(function(elem, i){
+    if (elem.length > aux) {
+      txt = elem;
+      aux = elem.length;
+    }
+  });
+  return txt
 }
 
 function buscarAmigo(amigos, nombre) {
@@ -24,7 +44,15 @@ function buscarAmigo(amigos, nombre) {
   // Ej:
   //  var amigos = [{ nombre: 'toni', edad: 33 } , { nombre: 'Emi', edad: 25 }];
   //  buscarAmigo(amigos, 'toni') // retorna { nombre: 'toni', edad: 33 };
-  
+  var aux;
+  amigos.forEach( function(element, index, amigos) {
+    // console.log(element);
+    if (element.nombre === nombre) {
+      // console.log(element);
+      aux = element;
+    }
+  });
+  return aux;
 }
 
 function sumArray(array, n) {
@@ -35,7 +63,16 @@ function sumArray(array, n) {
   // sumArray([2,5,7,10,11,15,20], 13)  // retorna true     2+11 suman 13
   // sumArray([2,5,7,10,11,15,20], 14)  // retorna false
   // pista: podes usar bucles anidados;
-  
+  for (var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array.length; j++) {
+      if (array[i] != array[j]) {
+        if ((array[i] + array[j]) === n) {
+          return true;
+        }
+      }
+    }
+  }
+  return false
 };
 
 function pluck(array, propiedad) { 
@@ -46,8 +83,10 @@ function pluck(array, propiedad) {
   // var productos = [{ name: 'TV LCD', price: 100}, { name: 'Computadora', price: 500 }]
   // productos.pluck(productos, 'name') // ['TV LCD', 'Computadora']
   // pista: es una buena oportunidad para usar map.
-  
-  
+  var prods = array.map(function(index){
+    return index[propiedad]
+  })
+  return prods
 }
 
 // =======================================================================
@@ -61,19 +100,23 @@ function crearClasePersona() {
 
   class Persona {
     constructor(nombre, edad, hobbies, amigos) {
-      
+      this.nombre = nombre;
+      this.edad = edad;
+      this.hobbies = hobbies;
+      this.amigos = amigos;
     }
 
     addFriend(nombre, edad) {
       // el metodo addFriend recibe un string nombre y un entero edad y debe agregar un objeto:
       // { nombre: nombre, edad: edad} al arreglo de amigos de la persona.
       // no debe retornar nada.
-      
+      this.amigos.push({nombre: nombre, edad: edad})
     }
 
     addHobby(hobby) {
       // este método debe agregar un hobby (hobby) al arreglo de hobbies de la persona.
       // no debe retornar nada.
+      this.hobbies.push(hobby);
       
     }
     getFriends() {
@@ -81,14 +124,22 @@ function crearClasePersona() {
       // de la persona.
       // Ej:
       // persona.getFriends() // retorna ['toni', 'Leo', 'Manu']
-      
+      var ret = []
+      ret = this.amigos.map(function(nomb){
+        return nomb['nombre']
+      })
+      return ret
     }
 
     getHobbies() {
       // Escribe una función que retorne un arreglo con los hobbies de la persona
       // Ej:
       // persona.getHobbies() // retorna ['correr', 'dormir', 'nadar']
-      
+      var ret = [];
+      this.hobbies.forEach( function(element, index, hobbies) {
+        ret.push(element)
+      });
+      return ret
     }
 
     getPromedioEdad() {
@@ -104,6 +155,14 @@ function crearClasePersona() {
       //   }]
       // }
       // persona.getPromedioEdad() // retorna 29
+      var cant = 0;
+      var acum = 0;
+      this.amigos.forEach(function(elem, index, amigos){
+        cant += 1;
+        acum += elem.edad;
+      })
+      var prom = acum / cant;
+      return prom;
     }
   };
 
@@ -135,7 +194,9 @@ function filtrar(funcion) {
   // productos.filtrar(function(p) {
   //   return p.price >= 50;
   // }) => [{price: 100, name:'tv'}]
-
+  if (funcion(productos)) {
+    return productos
+  }
 };
 
 // No modifiques nada debajo de esta linea

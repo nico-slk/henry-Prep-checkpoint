@@ -1,0 +1,42 @@
+*{
+	font-family: 'Calibri', 'Verdana', 'Roboto';
+	text-decoration: none;
+	margin: 0 0 0 0;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	margin-top: 200px;
+}
+
+#contenedor{
+	width: 500px;
+	background-color: yellow;
+	font-size: 25px;
+	color: red;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+#contenedor li{
+	margin: 0;
+}
+
+img{
+	width: 80%;
+}
+
+#contenedor-sp-a{
+	width: 500px;
+	display: flex;
+	flex-direction: column;
+	color: black;
+	font-size: 18px;
+}
+
+a:-webkit-any-link {
+    color: green;
+    cursor: pointer;
+}

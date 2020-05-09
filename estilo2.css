@@ -1,0 +1,104 @@
+*{
+	color: white;
+	font-size: 18px;
+}
+
+body{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	height: 1200px;
+}
+
+#div-negro{
+	background-color: black;
+	margin: 30px 0;
+	border-top: 1px black solid ;
+	border-right: 20px black solid ;
+	border-bottom: 30px black solid ;
+	border-left: 1px black solid ;
+	padding: 10px 5px;
+	width: 500px;
+	height: 300px;
+}
+
+#uno{
+	display: flex;
+	width: 1200px;
+	height: 100px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	border: solid 5px pink;
+	margin-top: 10px;
+}
+
+#dos{
+	display: flex;
+	width: 1200px;
+	height: 100px;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	justify-content: center;
+	border: solid 5px orange;
+	margin-top: 10px;
+}
+
+#tres{
+	display: flex;
+	width: 1200px;
+	height: 100px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	border: solid 5px orange;
+	margin-top: 10px;
+}
+
+#uno-contact, #uno-careers, #uno-about{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+}
+
+#uno #uno-about{
+	margin-left: auto;
+}
+
+#dos-contact, #dos-careers, #dos-about{
+	display: flex;
+	flex-grow: 3;
+	align-items: center;
+	justify-content: center;
+}
+
+
+#tres-contact, #tres-careers, #tres-about{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+}
+
+
+#uno-contact, #dos-contact, #tres-contact{
+	background-color: #ff2a00;
+	text-align: center;
+}
+
+#uno-careers, #dos-careers, #tres-careers{
+	background-color: #00bdff;
+	text-align: center;
+}
+
+#uno-about, #dos-about, #tres-about{
+	background-color: #6f6;
+	text-align: center;
+}
+
+#uno{
+	position: fixed;
+	bottom: 0;
+}
